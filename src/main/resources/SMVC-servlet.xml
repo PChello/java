@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/tx 
+       http://www.springframework.org/schema/tx/spring-tx.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/aop 
+       http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/mvc 
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       ">
+
+	<!-- 配置springMVC的注解 -->
+	<mvc:annotation-driven></mvc:annotation-driven>
+	<context:component-scan base-package="com.lanou"></context:component-scan>
+	<!--默认的资源处理方式 图片js -->
+	<mvc:default-servlet-handler />
+	<bean id="jspViewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	<!-- 1.拦截器按照配置的执行顺序执行，如果perhandle全部都返回turn,按逆序执行posthandle,最后逆序执行afterCompletion 
+		2.如果拦截器的Prohandle中有一个返回false，所有的posthandle都不执行 3.返回ture的会执行afterComletion 
+		1.地址 2.用户信息 3.权限 -->
+
+
+	<!-- <mvc:interceptors> <mvc:interceptor> <mvc:mapping path="/**" /> <bean 
+		class="com.lanou.interceptor.InterceptorHandles"></bean> </mvc:interceptor> 
+		<mvc:interceptor> <mvc:mapping path="/**" /> <bean class="com.lanou.interceptor.IntercepterHandle2"></bean> 
+		</mvc:interceptor> <mvc:interceptor> <mvc:mapping path="/**" /> <bean class="com.lanou.interceptor.IntercepterHandle3"></bean> 
+		</mvc:interceptor> </mvc:interceptors> -->
+
+<!-- 	<mvc:interceptors>
+		<mvc:interceptor>
+
+			<mvc:mapping path="/**" />
+				<mvc:exclude-mapping path="/login"/>
+			<bean class="com.lanou.interceptor.LoginIntercepter"></bean>
+		
+		</mvc:interceptor>
+
+
+	</mvc:interceptors> -->
+
+</beans>
